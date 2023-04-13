@@ -54,9 +54,9 @@ namespace ArtshopWebApp.Controllers
         // POST: Djelos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Iddjelo,Godinadjelo,Natpisdjelo,Cijenadjelo,Opisdjelo,Tipdjelo,Idautor")] Djelo djelo)
+        public async Task<IActionResult> Create([Bind("Iddjelo,Godinadjelo,Natpisdjelo,Cijenadjelo,Opisdjelo,Tipdjelo,Idautor,Imgdjelo")] Djelo djelo)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,34 @@ namespace ArtshopWebApp.Controllers
             }
             ViewData["Idautor"] = new SelectList(_context.Autors, "Idautor", "Idautor", djelo.Idautor);
             return View(djelo);
+        }*/
+        [HttpPost]
+        public async Task<IActionResult> Create(Djelo model, IFormFile imgDjeloImage)
+        {
+            if (imgDjeloImage != null && imgDjeloImage.Length > 0)
+            {
+                // Convert the uploaded file to a byte array
+                /*using (var ms = new MemoryStream())
+                {
+                    await imgDjeloImage.CopyToAsync(ms);
+                    model.Imgdjelo = ms.ToArray();
+                
+                }*/ 
+                using (var reader = new BinaryReader(imgDjeloImage.OpenReadStream()))
+                {
+                    model.Imgdjelo = reader.ReadBytes((int)imgDjeloImage.Length);
+                }
+            }
+            // Add the new Djelo to the database
+            _context.Djelos.Add(model);
+            await _context.SaveChangesAsync();
+            // Handle other form fields and save to database
+            // ...
+
+            // Redirect to the index page or another appropriate page
+            return RedirectToAction("Index");
         }
+
 
         // GET: Djelos/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -90,7 +117,7 @@ namespace ArtshopWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Iddjelo,Godinadjelo,Natpisdjelo,Cijenadjelo,Opisdjelo,Tipdjelo,Idautor")] Djelo djelo)
+        public async Task<IActionResult> Edit(int id, [Bind("Iddjelo,Godinadjelo,Natpisdjelo,Cijenadjelo,Opisdjelo,Tipdjelo,Idautor,Imgdjelo")] Djelo djelo)
         {
             if (id != djelo.Iddjelo)
             {
@@ -139,6 +166,8 @@ namespace ArtshopWebApp.Controllers
 
             return View(djelo);
         }
+        
+
 
         // POST: Djelos/Delete/5
         [HttpPost, ActionName("Delete")]

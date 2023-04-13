@@ -19,6 +19,8 @@ public partial class Djelo
 
     public int Idautor { get; set; }
 
+    public byte[]? Imgdjelo { get; set; }
+
     public virtual Autor IdautorNavigation { get; set; } = null!;
 
     public virtual ICollection<Ponudum> Ponuda { get; } = new List<Ponudum>();

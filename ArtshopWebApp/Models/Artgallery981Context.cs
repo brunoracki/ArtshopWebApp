@@ -95,6 +95,7 @@ public partial class Artgallery981Context : DbContext
             entity.Property(e => e.Cijenadjelo).HasColumnName("cijenadjelo");
             entity.Property(e => e.Godinadjelo).HasColumnName("godinadjelo");
             entity.Property(e => e.Idautor).HasColumnName("idautor");
+            entity.Property(e => e.Imgdjelo).HasColumnName("imgdjelo");
             entity.Property(e => e.Natpisdjelo)
                 .HasMaxLength(30)
                 .HasColumnName("natpisdjelo");
