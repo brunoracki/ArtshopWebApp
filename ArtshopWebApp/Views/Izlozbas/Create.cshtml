@@ -1,0 +1,63 @@
+﻿@model ArtshopWebApp.Models.Izlozba
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Izlozba</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Idizlozba" class="control-label"></label>
+                <input asp-for="Idizlozba" class="form-control" />
+                <span asp-validation-for="Idizlozba" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imegalerija" class="control-label"></label>
+                <input asp-for="Imegalerija" class="form-control" />
+                <span asp-validation-for="Imegalerija" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pocetak" class="control-label"></label>
+                <input asp-for="Pocetak" class="form-control" />
+                <span asp-validation-for="Pocetak" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kraj" class="control-label"></label>
+                <input asp-for="Kraj" class="form-control" />
+                <span asp-validation-for="Kraj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drzava" class="control-label"></label>
+                <input asp-for="Drzava" class="form-control" />
+                <span asp-validation-for="Drzava" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mjesto" class="control-label"></label>
+                <input asp-for="Mjesto" class="form-control" />
+                <span asp-validation-for="Mjesto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Postbroj" class="control-label"></label>
+                <input asp-for="Postbroj" class="form-control" />
+                <span asp-validation-for="Postbroj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

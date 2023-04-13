@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ArtshopWebApp.Models.Izlozba>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Imegalerija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pocetak)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kraj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drzava)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mjesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postbroj)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imegalerija)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pocetak)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kraj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drzava)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mjesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postbroj)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idizlozba">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idizlozba">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idizlozba">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

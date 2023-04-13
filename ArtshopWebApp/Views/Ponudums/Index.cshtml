@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ArtshopWebApp.Models.Ponudum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cijenaponuda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Datumponuda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IddjeloNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdkupacNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cijenaponuda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datumponuda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IddjeloNavigation.Iddjelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdkupacNavigation.Idkupac)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idponuda">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idponuda">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idponuda">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
