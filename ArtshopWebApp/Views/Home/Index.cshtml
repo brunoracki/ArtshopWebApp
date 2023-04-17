@@ -4,6 +4,14 @@
     
 }
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script>
+    var cartNum = 0; // initialize the cartNum variable to 0
+    
+    function addToCart() {
+        cartNum++; // increment the value of cartNum by 1
+    }
+</script>
+
 <style>
     body {
         /*background-image: url("https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80")*/
@@ -66,10 +74,10 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
+                    <button class="btn btn-outline-dark" type="submit"> 
                         <i class="bi-cart-fill me-1"></i>
                         Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">@(GlobalVariables.cartNum)</span>
                     </button>
                 </form>
             </div>
@@ -120,6 +128,9 @@
                                     <!-- Product actions-->
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                         <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View details</a></div>
+                                    </div>
+                                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                        <div class="text-center"><button class="btn btn-outline-danger mt-auto" onclick="addToCart()">Add to cart</button></div>
                                     </div>
                                 </div>
                             </div>
